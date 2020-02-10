@@ -8,7 +8,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>To do list Manager - Task mate</title>
+    {% block title %}
+    {% endblock title %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Task Mate</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,17 +18,16 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar">
           <a class="nav-link nav-item" href="/">Home</a>
-          <a class="nav-link nav-item" href="/todolist">To do List</a>
-          <a class="nav-link nav-item" href="/contact">Contact us</a>
-          <a class="nav-link nav-item" href="/about">About us</a>
+          <a class="nav-link nav-item" href="{% url 'todolist' %}">To do List</a>
+          <a class="nav-link nav-item" href="{% url 'contact' %}">Contact us</a>
+          <a class="nav-link nav-item" href="{% url 'about' %}">About us</a>
         </div>
       </div>
     </nav>
   </head>
   <body>
-    <div class="container">
-        <h1>{{welcome_text}}</h1>
-    </div>
+    {% block content %}
+    {% endblock content %}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
