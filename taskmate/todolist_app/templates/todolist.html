@@ -7,6 +7,16 @@
 
 {% block content %}
   <div class="container">
+  </br>
+    <form method="POST">
+    {% csrf_token %}
+      <div class="form-group">
+        <label for="exampleInputEmail1">Add Task</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Add task" aria-describedby="emailHelp">
+      </div>
+      <button type="submit" class="btn btn-primary">Add Task</button>
+    </form>
+  </br>
   <table class="table table-bordered">
   </br>
     <thead>
