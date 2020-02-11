@@ -7,12 +7,17 @@
 
 {% block content %}
   <div class="container">
+  {% for message in messages %}
+    <div class="alert alert-info" role="alert">
+        {{ message }}
+    </div>
+  {% endfor %}
   </br>
     <form method="POST">
     {% csrf_token %}
       <div class="form-group">
         <label for="exampleInputEmail1">Add Task</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Add task" aria-describedby="emailHelp">
+        <input type="text" name="task" class="form-control" id="exampleInputEmail1" placeholder="Add task" aria-describedby="emailHelp">
       </div>
       <button type="submit" class="btn btn-primary">Add Task</button>
     </form>
