@@ -6,9 +6,36 @@
 {% endblock title %}
 
 {% block content %}
-     <div class="container">
-        <h1>
-            {{ welcome_text }}
-        </h1>
-    </div>
+  <div class="container">
+  <table class="table table-bordered">
+  </br>
+    <thead>
+      <tr class="table-primary">
+        <th scope="col">Task</th>
+        <th scope="col">Done</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for task in all_tasks %}
+        {% if task.done %}
+          <tr class="table-success">
+            <td>{{task.task}}</td>
+            <td>{{task.done}}</td>
+            <td>Edit</td>
+            <td>Delete</td>
+          </tr>
+        {% else %}
+          <tr class="table-secondary">
+            <td>{{task.task}}</td>
+            <td>{{task.done}}</td>
+            <td>Edit</td>
+            <td>Delete</td>
+          </tr>
+        {% endif %}
+      {% endfor  %}
+    </tbody>
+  </table>
+  </div>
 {% endblock content %}
