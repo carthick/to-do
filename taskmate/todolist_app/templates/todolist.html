@@ -14,7 +14,7 @@
     </div>
   {% endfor %}
   </br>
-    <form method="POST">
+    <form enctype="multipart/form-data" method="POST">
     {% csrf_token %}
       <div class="form-group">
         <label for="exampleInputEmail1">Add Task</label>
@@ -27,6 +27,7 @@
   </br>
     <thead>
       <tr class="table-primary">
+        <th scope="col">No</th>
         <th scope="col">Task</th>
         <th scope="col">Done</th>
         <th scope="col">Edit</th>
@@ -37,17 +38,19 @@
       {% for task in all_tasks %}
         {% if task.done %}
           <tr class="table-success">
+            <td>{{task.id}}</td>
             <td>{{task.task}}</td>
             <td>{{task.done}}</td>
-            <td>Edit</td>
-            <td>Delete</td>
+            <td><a class="nav-link nav-item" href="{% url 'edit_task' task.id %}">EDIT</a></td>
+            <td><a class="nav-link nav-item" href="{% url 'delete_task' task.id %}">Delete</a></td>
           </tr>
         {% else %}
           <tr class="table-secondary">
+            <td>{{task.id}}</td>
             <td>{{task.task}}</td>
             <td>{{task.done}}</td>
-            <td>Edit</td>
-            <td>Delete</td>
+            <td><a class="nav-link nav-item" href="{% url 'edit_task' task.id %}">EDIT</a></td>
+            <td><a class="nav-link nav-item" href="{% url 'delete_task' task.id %}">Delete</a></td>
           </tr>
         {% endif %}
       {% endfor  %}

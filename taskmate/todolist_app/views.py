@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from todolist_app.models import TaskList
 from todolist_app.forms import TaskForm
@@ -28,3 +28,22 @@ def about(request):
         "about_text":"I am god ",
     }
     return render(request, 'about.html', context)
+
+def delete_task(request, item_id):
+    task = TaskList.objects.get(pk=item_id)
+    task.delete()
+    return redirect('todolist')
+
+
+def edit_task(request, item_id):
+    if request.method =='POST':
+        instance = get_object_or_404(TaskList, id=item_id)
+        task = TaskList.objects.get(pk=item_id)
+        form = TaskForm(request.POST, instance=instance)
+        if form.is_valid():
+            form.save()
+        messages.success(request,('Task has beeen updated'))
+        return redirect('todolist')
+    else:
+        task = TaskList.objects.get(pk=item_id)
+        return render(request, 'edit.html', {'task':task})
