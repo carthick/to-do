@@ -47,3 +47,9 @@ def edit_task(request, item_id):
     else:
         task = TaskList.objects.get(pk=item_id)
         return render(request, 'edit.html', {'task':task})
+
+def update_status(request, item_id, status_flag):
+    task = TaskList.objects.get(pk=item_id)
+    task.done = status_flag
+    task.save()
+    return redirect('todolist')
