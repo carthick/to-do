@@ -17,10 +17,10 @@
   </br>
     <form enctype="multipart/form-data" method="POST">
     {% csrf_token %}
-      <div class="form-group">
-        <input type="text" name="task" class="form-control" id="exampleInputEmail1" placeholder="Add task" aria-describedby="emailHelp">
+      <div class="row">
+        <input type="text" name="task" class="form-control col-lg-4 " id="exampleInputEmail1" placeholder="Add task" aria-describedby="emailHelp">
+        <button type="submit" class="btn btn-primary col-lg-2 offset-md-4">Add Task</button>
       </div>
-      <button type="submit" class="btn btn-primary">Add Task</button>
     </form>
   </br>
   <table class="table table-bordered">

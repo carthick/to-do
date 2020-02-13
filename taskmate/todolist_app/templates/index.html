@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>
+        Welcome
+    </title>
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mt-5">
+                <img src="{% static 'images/workshop.jpg' %}" width="360px" height="250px">
+            </div>
+            <div class="col-lg-4 mt-5">
+                <img src="{% static 'images/kelly-sikkema--1_RZL8BGBM-unsplash.jpg' %}" width="360px" height="250px">
+            </div>
+            <div class="col-lg-4 mt-5">
+                <img src="{% static 'images/cathryn.jpg' %}" width="360px" height="250px">
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-10 offset-md-1">
+                <center><h2> Plan your day to day To do's from anywhere </h1></center>
+                <center><h1> Easy to use Application </h1></center>
+                <center><h5> Keep Track of your history </h1></center>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
