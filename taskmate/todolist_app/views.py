@@ -7,6 +7,12 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 
+def index(request):
+    context = {
+        "index_text":"Welcomen to To Do Application",
+    }
+    return render(request, 'index1.html', context)
+
 def todolist(request):
     if request.method=='POST':
         form = TaskForm(request.POST or None)
