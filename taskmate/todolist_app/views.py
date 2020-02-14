@@ -11,7 +11,7 @@ def index(request):
     context = {
         "index_text":"Welcomen to To Do Application",
     }
-    return render(request, 'index.html', context)
+    return render(request, 'index1.html', context)
 
 def todolist(request):
     if request.method=='POST':
