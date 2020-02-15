@@ -19,11 +19,13 @@ def todolist(request):
     if request.method=='POST':
         form = TaskForm(request.POST or None)
         if form.is_valid():
-            form.save()
+            instance = form.save(commit=False)
+            instance.manage = request.user
+            instance.save()
         messages.success(request,('Task has beeen created'))
         return redirect('todolist')
     else:
-        all_tasks = TaskList.objects.all()
+        all_tasks = TaskList.objects.filter(manage=request.user)
         paginator = Paginator(all_tasks, 5)
         page = request.GET.get('pg')
         all_tasks = paginator.get_page(page)
@@ -44,8 +46,11 @@ def about(request):
 
 @login_required
 def delete_task(request, item_id):
-    task = TaskList.objects.get(pk=item_id)
-    task.delete()
+    if task.manage == request.user:
+        task = TaskList.objects.get(pk=item_id)
+        task.delete()
+    else:
+        messages.error(request,('Permission Denied'))
     return redirect('todolist')
 
 @login_required
@@ -64,6 +69,9 @@ def edit_task(request, item_id):
 @login_required
 def update_status(request, item_id, status_flag):
     task = TaskList.objects.get(pk=item_id)
-    task.done = status_flag
-    task.save()
+    if task.manage == request.user:
+        task.done = status_flag
+        task.save()
+    else:
+        messages.error(request,('Permission Denied'))
     return redirect('todolist')
