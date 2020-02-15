@@ -24,6 +24,19 @@
           <a class="nav-link nav-item" href="{% url 'about' %}">About Me</a>
         </div>
       </div>
+      {% if user.is_authenticated %}
+        <div class="p-2 bg-dark text-white">Logged In as {{ user.username }}</div>
+        <a href="{% url 'logout' %}">
+          <button class="btn btn-info my-2 my-sm-0" type="submit">Log Out</button>
+        </a>
+      {% else %}
+        <a href="{% url 'login' %}">
+          <button class="btn btn-success m-2 my-2 my-sm-0" type="submit">Log In</button>
+        </a>
+        <a href="{% url 'register' %}">
+          <button class="btn btn-primary my-2 my-sm-0" type="submit">Register</button>
+        </a>
+      {% endif %}
     </nav>
   </head>
   <body class="bg-light">

@@ -19,8 +19,9 @@ from todolist_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index', views.index, name='index'),
+    path('', views.index, name='index'),
     path('todolist/',include('todolist_app.urls')),
+    path('account/',include('users.urls')),
     path('contact', views.contact, name='contact'),
     path('about', views.about, name='about'),
 ]
